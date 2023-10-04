@@ -19,4 +19,6 @@ public interface PostGetMapping {
     String getMemberNickname();
 
     LocalDateTime getCreatedDateTime();
+
+    LocalDateTime getModifiedDateTime();
 }
