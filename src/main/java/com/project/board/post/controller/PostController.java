@@ -1,6 +1,7 @@
 package com.project.board.post.controller;
 
 import com.project.board.post.controller.dto.PostCreateRequestDto;
+import com.project.board.post.controller.dto.PostUpdateRequestDto;
 import com.project.board.post.service.dto.PostCreateResponseDto;
 import com.project.board.post.service.dto.PostGetResponseDto;
 import com.project.board.post.service.PostService;
@@ -34,5 +35,12 @@ public class PostController {
     @GetMapping("/posts/{postId}")
     public ResponseEntity<PostGetResponseDto> getPost(@PathVariable Long postId) {
         return ResponseEntity.ok(postService.getPost(postId));
+    }
+
+    @PatchMapping("/posts/{postId}")
+    public ResponseEntity<Void> updatePost(@PathVariable Long postId,
+                                           @RequestBody @Valid PostUpdateRequestDto requestDto) {
+        postService.updatePost(postId, requestDto);
+        return ResponseEntity.ok().build();
     }
 }
