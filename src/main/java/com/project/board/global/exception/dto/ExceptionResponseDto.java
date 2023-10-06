@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ExceptionResponseDto {
 
-    private String code;
+    private String statusCode;
 
     private String message;
 
     @Builder
-    public ExceptionResponseDto(String code, String message) {
-        this.code = code;
+    public ExceptionResponseDto(String statusCode, String message) {
+        this.statusCode = statusCode;
         this.message = message;
     }
 }
