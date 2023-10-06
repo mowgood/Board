@@ -1,5 +1,6 @@
 package com.project.board.post.enumeration;
 
+import com.project.board.post.exception.PostCategoryNotFoundException;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -20,6 +21,6 @@ public enum PostCategory {
         return Arrays.stream(PostCategory.values())
                 .filter(x -> x.getTitle().equals(title))
                 .findAny()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(PostCategoryNotFoundException::new);
     }
 }
