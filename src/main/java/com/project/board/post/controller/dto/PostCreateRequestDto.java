@@ -6,13 +6,17 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PostCreateRequestDto {
+
+    @NotBlank(message = "제목을 입력하세요.")
     private String title;
 
+    @NotBlank(message = "내용을 입력하세요.")
     private String content;
 
     private PostCategory postCategory;

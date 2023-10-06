@@ -3,6 +3,7 @@ package com.project.board.post.service;
 import com.project.board.post.controller.dto.PostCreateRequestDto;
 import com.project.board.comment.service.dto.CommentGetByPostResponseDto;
 import com.project.board.comment.service.dto.CommentGetResponseDto;
+import com.project.board.post.exception.PostNotFoundException;
 import com.project.board.post.service.dto.PostCreateResponseDto;
 import com.project.board.post.service.dto.PostGetResponseDto;
 import com.project.board.member.domain.Member;
@@ -50,7 +51,7 @@ public class PostService {
         PostGetMapping postGetMapping = postRepository.findByPostId(postId);
 
         if(postGetMapping == null) {
-
+            throw new PostNotFoundException();
         }
 
         List<CommentGetResponseDto> parentCommentList = commentRepository.findParentByPostId(postId);

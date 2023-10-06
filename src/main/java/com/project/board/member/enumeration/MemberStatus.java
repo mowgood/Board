@@ -1,5 +1,6 @@
 package com.project.board.member.enumeration;
 
+import com.project.board.member.exception.MemberStatusNotFoundException;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -22,6 +23,6 @@ public enum MemberStatus {
         return Arrays.stream(MemberStatus.values())
                 .filter(x -> x.getTitle().equals(title))
                 .findAny()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(MemberStatusNotFoundException::new);
     }
 }

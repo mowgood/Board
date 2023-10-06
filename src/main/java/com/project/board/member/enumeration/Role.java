@@ -1,5 +1,6 @@
 package com.project.board.member.enumeration;
 
+import com.project.board.member.exception.RoleNotFoundException;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -20,6 +21,6 @@ public enum Role {
         return Arrays.stream(Role.values())
                 .filter(x -> x.getTitle().equals(title))
                 .findAny()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(RoleNotFoundException::new);
     }
 }
