@@ -1,4 +1,4 @@
-package com.project.board.comment.service.dto;
+package com.project.board.comment.dto.response;
 
 import com.project.board.global.util.DateFormatUtil;
 import lombok.Builder;

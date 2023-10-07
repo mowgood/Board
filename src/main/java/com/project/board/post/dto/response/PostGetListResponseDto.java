@@ -1,6 +1,6 @@
-package com.project.board.post.service.dto;
+package com.project.board.post.dto.response;
 
-import com.project.board.global.dto.ListResponseDto;
+import com.project.board.global.dto.response.ListResponseDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

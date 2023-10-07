@@ -1,6 +1,6 @@
 package com.project.board.comment.repository;
 
-import com.project.board.comment.service.dto.CommentGetResponseDto;
+import com.project.board.comment.dto.response.CommentGetResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

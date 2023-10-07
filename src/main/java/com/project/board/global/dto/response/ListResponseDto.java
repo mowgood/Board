@@ -1,4 +1,4 @@
-package com.project.board.global.dto;
+package com.project.board.global.dto.response;
 
 import com.project.board.global.util.PagingUtil;
 import lombok.AccessLevel;

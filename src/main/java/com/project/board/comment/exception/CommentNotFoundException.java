@@ -1,13 +1,13 @@
-package com.project.board.post.exception;
+package com.project.board.comment.exception;
 
 import com.project.board.global.exception.GlobalException;
 import org.springframework.http.HttpStatus;
 
-public class PostNotFoundException extends GlobalException {
+public class CommentNotFoundException extends GlobalException {
 
-    private static final String MESSAGE = "유효하지 않은 게시글입니다.";
+    private static final String MESSAGE = "유효하지 않은 댓글입니다.";
 
-    public PostNotFoundException() {
+    public CommentNotFoundException() {
         super(MESSAGE);
     }
 

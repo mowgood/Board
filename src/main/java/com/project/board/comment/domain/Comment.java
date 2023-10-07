@@ -4,6 +4,7 @@ import com.project.board.global.domain.BaseEntity;
 import com.project.board.member.domain.Member;
 import com.project.board.post.domain.Post;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -51,4 +52,11 @@ public class Comment extends BaseEntity {
     @OneToMany(mappedBy = "parent")
     private List<Comment> children = new ArrayList<>();
 
+    @Builder
+    public Comment(String content, Member member, Post post, Comment parent) {
+        this.content = content;
+        this.member = member;
+        this.post = post;
+        this.parent = parent;
+    }
 }

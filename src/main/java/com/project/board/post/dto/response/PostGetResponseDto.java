@@ -1,4 +1,4 @@
-package com.project.board.post.service.dto;
+package com.project.board.post.dto.response;
 
 import com.project.board.global.util.DateFormatUtil;
 import com.project.board.post.enumeration.PostCategory;
