@@ -1,4 +1,4 @@
-package com.project.board.comment.controller.dto;
+package com.project.board.comment.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Getter;

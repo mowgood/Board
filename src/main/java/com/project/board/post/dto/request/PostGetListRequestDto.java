@@ -1,6 +1,6 @@
-package com.project.board.post.controller.dto;
+package com.project.board.post.dto.request;
 
-import com.project.board.global.dto.ListRequestDto;
+import com.project.board.global.dto.request.ListRequestDto;
 import com.project.board.post.enumeration.PostCategory;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com.project.board.comment.controller;
 
-import com.project.board.comment.controller.dto.CommentCreateRequestDto;
+import com.project.board.comment.dto.request.CommentCreateRequestDto;
 import com.project.board.comment.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

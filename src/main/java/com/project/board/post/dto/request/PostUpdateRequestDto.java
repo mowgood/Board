@@ -1,4 +1,4 @@
-package com.project.board.post.controller.dto;
+package com.project.board.post.dto.request;
 
 import com.project.board.post.enumeration.PostCategory;
 import lombok.AccessLevel;
@@ -8,11 +8,10 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PostCreateRequestDto {
+public class PostUpdateRequestDto {
 
     @NotBlank(message = "제목을 입력하세요.")
     private String title;
@@ -23,13 +22,10 @@ public class PostCreateRequestDto {
     @NotNull(message = "유효하지 않은 카테고리 입니다.")
     private PostCategory postCategory;
 
-    private UUID memberId;
-
     @Builder
-    public PostCreateRequestDto(String title, String content, PostCategory postCategory, UUID memberId) {
+    public PostUpdateRequestDto(String title, String content, PostCategory postCategory) {
         this.title = title;
         this.content = content;
         this.postCategory = postCategory;
-        this.memberId = memberId;
     }
 }

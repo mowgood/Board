@@ -1,11 +1,11 @@
 package com.project.board.post.controller;
 
-import com.project.board.post.controller.dto.PostCreateRequestDto;
-import com.project.board.post.controller.dto.PostGetListRequestDto;
-import com.project.board.post.controller.dto.PostUpdateRequestDto;
-import com.project.board.post.service.dto.PostCreateResponseDto;
-import com.project.board.post.service.dto.PostGetListResponseDto;
-import com.project.board.post.service.dto.PostGetOneResponseDto;
+import com.project.board.post.dto.request.PostCreateRequestDto;
+import com.project.board.post.dto.request.PostGetListRequestDto;
+import com.project.board.post.dto.request.PostUpdateRequestDto;
+import com.project.board.post.dto.response.PostCreateResponseDto;
+import com.project.board.post.dto.response.PostGetListResponseDto;
+import com.project.board.post.dto.response.PostGetOneResponseDto;
 import com.project.board.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

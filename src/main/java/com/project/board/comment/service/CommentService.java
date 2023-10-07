@@ -1,6 +1,6 @@
 package com.project.board.comment.service;
 
-import com.project.board.comment.controller.dto.CommentCreateRequestDto;
+import com.project.board.comment.dto.request.CommentCreateRequestDto;
 import com.project.board.comment.domain.Comment;
 import com.project.board.comment.exception.CommentNotFoundException;
 import com.project.board.comment.repository.CommentRepository;
