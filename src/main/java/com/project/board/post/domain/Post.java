@@ -1,10 +1,10 @@
 package com.project.board.post.domain;
 
-import com.project.board.post.dto.request.PostUpdateRequestDto;
-import com.project.board.post.enumeration.converter.PostCategoryConverter;
-import com.project.board.post.enumeration.PostCategory;
 import com.project.board.global.domain.BaseEntity;
 import com.project.board.member.domain.Member;
+import com.project.board.post.dto.request.PostUpdateRequestDto;
+import com.project.board.post.enumeration.PostCategory;
+import com.project.board.post.enumeration.converter.PostCategoryConverter;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
