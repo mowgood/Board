@@ -7,6 +7,7 @@ import javax.persistence.Converter;
 
 @Converter
 public class PostCategoryConverter implements AttributeConverter<PostCategory, String> {
+
     @Override
     public String convertToDatabaseColumn(PostCategory attribute) {
         return attribute.getTitle();
