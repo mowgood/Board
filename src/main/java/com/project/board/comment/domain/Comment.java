@@ -19,7 +19,7 @@ import java.util.List;
 @Entity
 @Getter
 @Where(clause = "deleted = false")
-@SQLDelete(sql = "UPDATE comment SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE comment SET deleted = true WHERE comment_id = ?")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Comment extends BaseEntity {
     @Id
