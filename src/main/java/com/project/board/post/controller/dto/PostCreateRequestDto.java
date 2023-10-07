@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Getter
@@ -19,6 +20,7 @@ public class PostCreateRequestDto {
     @NotBlank(message = "내용을 입력하세요.")
     private String content;
 
+    @NotNull(message = "유효하지 않은 카테고리 입니다.")
     private PostCategory postCategory;
 
     private UUID memberId;

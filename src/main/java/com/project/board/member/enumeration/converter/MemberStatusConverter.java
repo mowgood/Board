@@ -7,6 +7,7 @@ import javax.persistence.Converter;
 
 @Converter
 public class MemberStatusConverter implements AttributeConverter<MemberStatus, String> {
+
     @Override
     public String convertToDatabaseColumn(MemberStatus attribute) {
         return attribute.getTitle();
