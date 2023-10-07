@@ -91,4 +91,10 @@ public class PostService {
         Post post = postRepository.findById(postId).orElseThrow(PostNotFoundException::new);
         post.update(requestDto);
     }
+
+    @Transactional
+    public void deletePost(Long postId) {
+        postRepository.findById(postId).orElseThrow(PostNotFoundException::new);
+        postRepository.deleteById(postId);
+    }
 }
