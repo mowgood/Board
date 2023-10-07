@@ -2,6 +2,7 @@ package com.project.board.comment.service;
 
 import com.project.board.comment.dto.request.CommentCreateRequestDto;
 import com.project.board.comment.domain.Comment;
+import com.project.board.comment.dto.request.CommentUpdateRequestDto;
 import com.project.board.comment.exception.CommentNotFoundException;
 import com.project.board.comment.repository.CommentRepository;
 import com.project.board.member.domain.Member;
@@ -48,5 +49,11 @@ public class CommentService {
                     .build();
         }
         commentRepository.save(comment);
+    }
+
+    @Transactional
+    public void updateComment(Long commentId, CommentUpdateRequestDto requestDto) {
+        Comment comment = commentRepository.findById(commentId).orElseThrow(CommentNotFoundException::new);
+        comment.update(requestDto);
     }
 }

@@ -1,5 +1,6 @@
 package com.project.board.comment.domain;
 
+import com.project.board.comment.dto.request.CommentUpdateRequestDto;
 import com.project.board.global.domain.BaseEntity;
 import com.project.board.member.domain.Member;
 import com.project.board.post.domain.Post;
@@ -58,5 +59,9 @@ public class Comment extends BaseEntity {
         this.member = member;
         this.post = post;
         this.parent = parent;
+    }
+
+    public void update(CommentUpdateRequestDto requestDto) {
+        this.content = requestDto.getContent();
     }
 }
