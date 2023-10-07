@@ -20,7 +20,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Where(clause = "deleted = false")
-@SQLDelete(sql = "UPDATE member SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE member SET deleted = true WHERE member_id = ?")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
