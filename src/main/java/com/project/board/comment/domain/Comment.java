@@ -50,7 +50,7 @@ public class Comment extends BaseEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Comment parent;
 
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> children = new ArrayList<>();
 
     @Builder

@@ -56,4 +56,10 @@ public class CommentService {
         Comment comment = commentRepository.findById(commentId).orElseThrow(CommentNotFoundException::new);
         comment.update(requestDto);
     }
+
+    @Transactional
+    public void deleteComment(Long commentId) {
+        commentRepository.findById(commentId).orElseThrow(CommentNotFoundException::new);
+        commentRepository.deleteById(commentId);
+    }
 }
