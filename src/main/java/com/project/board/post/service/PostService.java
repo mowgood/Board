@@ -3,17 +3,23 @@ package com.project.board.post.service;
 import com.project.board.comment.repository.CommentRepository;
 import com.project.board.comment.service.dto.CommentGetByPostResponseDto;
 import com.project.board.comment.service.dto.CommentGetResponseDto;
+import com.project.board.global.util.PagingUtil;
 import com.project.board.member.domain.Member;
 import com.project.board.member.repository.MemberRepository;
 import com.project.board.post.controller.dto.PostCreateRequestDto;
+import com.project.board.post.controller.dto.PostGetListRequestDto;
 import com.project.board.post.controller.dto.PostUpdateRequestDto;
 import com.project.board.post.domain.Post;
 import com.project.board.post.exception.PostNotFoundException;
 import com.project.board.post.repository.PostRepository;
 import com.project.board.post.repository.mapping.PostGetMapping;
 import com.project.board.post.service.dto.PostCreateResponseDto;
+import com.project.board.post.service.dto.PostGetListResponseDto;
+import com.project.board.post.service.dto.PostGetOneResponseDto;
 import com.project.board.post.service.dto.PostGetResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,7 +46,7 @@ public class PostService {
                 .member(member)
                 .build();
 
-         postRepository.save(post);
+        postRepository.save(post);
 
         return PostCreateResponseDto.builder()
                 .createdId(post.getPostId())
@@ -48,10 +54,28 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public PostGetResponseDto getPost(Long postId) {
+    public PostGetListResponseDto getPostList(PostGetListRequestDto requestDto) {
+        if (requestDto.getColumn() == null || "".equals(requestDto.getColumn())) {
+            requestDto.setColumn("postId");
+        }
+        PageRequest pageable = PageRequest.of(requestDto.getPage(), requestDto.getPageSize(),
+                requestDto.getSortDirection(), requestDto.getColumn());
+
+        Page<PostGetResponseDto> postList = postRepository.getPostList(requestDto, pageable);
+
+        return PostGetListResponseDto.builder()
+                .pagingUtil(new PagingUtil(postList.getTotalElements(), postList.getTotalPages(),
+                        postList.getNumber(), postList.getSize()))
+                .postList(postList.stream().collect(Collectors.toList()))
+                .build();
+    }
+
+
+    @Transactional(readOnly = true)
+    public PostGetOneResponseDto getPost(Long postId) {
         PostGetMapping postGetMapping = postRepository.findByPostId(postId);
 
-        if(postGetMapping == null) {
+        if (postGetMapping == null) {
             throw new PostNotFoundException();
         }
 
@@ -73,7 +97,7 @@ public class PostService {
                         .childCommentList(childCommentList.get(comment.getCommentId()))
                         .build()).collect(Collectors.toList());
 
-        return PostGetResponseDto.builder()
+        return PostGetOneResponseDto.builder()
                 .postId(postGetMapping.getPostId())
                 .title(postGetMapping.getTitle())
                 .content(postGetMapping.getContent())
