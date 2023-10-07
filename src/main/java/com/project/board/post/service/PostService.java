@@ -5,6 +5,7 @@ import com.project.board.comment.service.dto.CommentGetByPostResponseDto;
 import com.project.board.comment.service.dto.CommentGetResponseDto;
 import com.project.board.global.util.PagingUtil;
 import com.project.board.member.domain.Member;
+import com.project.board.member.exception.MemberNotFoundException;
 import com.project.board.member.repository.MemberRepository;
 import com.project.board.post.controller.dto.PostCreateRequestDto;
 import com.project.board.post.controller.dto.PostGetListRequestDto;
@@ -37,7 +38,7 @@ public class PostService {
 
     @Transactional
     public PostCreateResponseDto createPost(PostCreateRequestDto requestDto) {
-        Member member = memberRepository.findById(requestDto.getMemberId()).orElseThrow();
+        Member member = memberRepository.findById(requestDto.getMemberId()).orElseThrow(MemberNotFoundException::new);
 
         Post post = Post.builder()
                 .title(requestDto.getTitle())
