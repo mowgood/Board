@@ -1,9 +1,11 @@
 package com.project.board.post.controller;
 
 import com.project.board.post.controller.dto.PostCreateRequestDto;
+import com.project.board.post.controller.dto.PostGetListRequestDto;
 import com.project.board.post.controller.dto.PostUpdateRequestDto;
 import com.project.board.post.service.dto.PostCreateResponseDto;
-import com.project.board.post.service.dto.PostGetResponseDto;
+import com.project.board.post.service.dto.PostGetListResponseDto;
+import com.project.board.post.service.dto.PostGetOneResponseDto;
 import com.project.board.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -32,8 +34,13 @@ public class PostController {
         return ResponseEntity.created(location).build();
     }
 
+    @GetMapping("/posts")
+    public ResponseEntity<PostGetListResponseDto> getPostList(PostGetListRequestDto requestDto) {
+        return ResponseEntity.ok(postService.getPostList(requestDto));
+    }
+
     @GetMapping("/posts/{postId}")
-    public ResponseEntity<PostGetResponseDto> getPost(@PathVariable Long postId) {
+    public ResponseEntity<PostGetOneResponseDto> getPost(@PathVariable Long postId) {
         return ResponseEntity.ok(postService.getPost(postId));
     }
 

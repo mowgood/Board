@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(BindException.class)
-    public ResponseEntity<ExceptionResponseDto> BindException(BindException exception) {
+    public ResponseEntity<ExceptionResponseDto> bindException(BindException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExceptionResponseDto.builder()
             .statusCode(String.valueOf(HttpStatus.BAD_REQUEST.value()))
             .message(Objects.requireNonNull(exception.getBindingResult().getFieldError().getDefaultMessage()))
