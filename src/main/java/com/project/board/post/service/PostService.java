@@ -1,17 +1,18 @@
 package com.project.board.post.service;
 
-import com.project.board.post.controller.dto.PostCreateRequestDto;
+import com.project.board.comment.repository.CommentRepository;
 import com.project.board.comment.service.dto.CommentGetByPostResponseDto;
 import com.project.board.comment.service.dto.CommentGetResponseDto;
-import com.project.board.post.exception.PostNotFoundException;
-import com.project.board.post.service.dto.PostCreateResponseDto;
-import com.project.board.post.service.dto.PostGetResponseDto;
 import com.project.board.member.domain.Member;
-import com.project.board.post.domain.Post;
-import com.project.board.comment.repository.CommentRepository;
 import com.project.board.member.repository.MemberRepository;
+import com.project.board.post.controller.dto.PostCreateRequestDto;
+import com.project.board.post.controller.dto.PostUpdateRequestDto;
+import com.project.board.post.domain.Post;
+import com.project.board.post.exception.PostNotFoundException;
 import com.project.board.post.repository.PostRepository;
 import com.project.board.post.repository.mapping.PostGetMapping;
+import com.project.board.post.service.dto.PostCreateResponseDto;
+import com.project.board.post.service.dto.PostGetResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -83,5 +84,11 @@ public class PostService {
                 .modifiedDateTime(postGetMapping.getModifiedDateTime())
                 .commentList(commentList)
                 .build();
+    }
+
+    @Transactional
+    public void updatePost(Long postId, PostUpdateRequestDto requestDto) {
+        Post post = postRepository.findById(postId).orElseThrow(PostNotFoundException::new);
+        post.update(requestDto);
     }
 }

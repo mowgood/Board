@@ -1,5 +1,6 @@
 package com.project.board.post.domain;
 
+import com.project.board.post.controller.dto.PostUpdateRequestDto;
 import com.project.board.post.enumeration.converter.PostCategoryConverter;
 import com.project.board.post.enumeration.PostCategory;
 import com.project.board.global.domain.BaseEntity;
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Where(clause = "deleted = false")
-@SQLDelete(sql = "UPDATE post SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE post SET deleted = true WHERE post_id = ?")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Post extends BaseEntity {
     @Id
@@ -50,5 +51,11 @@ public class Post extends BaseEntity {
         this.content = content;
         this.postCategory = postCategory;
         this.member = member;
+    }
+
+    public void update(PostUpdateRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.postCategory = requestDto.getPostCategory();
     }
 }
