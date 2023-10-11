@@ -1,15 +1,14 @@
 package com.project.board.member.domain;
 
-import com.project.board.member.enumeration.converter.MemberStatusConverter;
-import com.project.board.member.enumeration.converter.RoleConverter;
 import com.project.board.member.enumeration.MemberStatus;
 import com.project.board.member.enumeration.Role;
+import com.project.board.member.enumeration.converter.MemberStatusConverter;
+import com.project.board.member.enumeration.converter.RoleConverter;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -19,8 +18,6 @@ import java.util.UUID;
 
 @Entity
 @Getter
-@Where(clause = "deleted = false")
-@SQLDelete(sql = "UPDATE member SET deleted = true WHERE member_id = ?")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
@@ -55,9 +52,18 @@ public class Member {
 
     private LocalDateTime deleteDateTime;
 
-    private boolean deleted = Boolean.FALSE;
-
     @NotNull
     private int blockCount;
 
+    @Builder
+    public Member(String name, String nickname, String email, String password, Role role, MemberStatus status, LocalDateTime passwordValidatedDate, int blockCount) {
+        this.name = name;
+        this.nickname = nickname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.status = status;
+        this.passwordValidatedDate = passwordValidatedDate;
+        this.blockCount = blockCount;
+    }
 }
