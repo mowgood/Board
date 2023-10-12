@@ -1,14 +1,13 @@
 package com.project.board.post.dto.response;
 
-import com.project.board.post.enumeration.PostCategory;
-import com.project.board.global.util.DateFormatUtil;
 import com.project.board.comment.dto.response.CommentGetByPostResponseDto;
+import com.project.board.global.util.DateFormatUtil;
+import com.project.board.post.enumeration.PostCategory;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 public class PostGetOneResponseDto {
@@ -20,7 +19,7 @@ public class PostGetOneResponseDto {
 
     private PostCategory postCategory;
 
-    private UUID memberId;
+    private Long memberId;
 
     private String nickname;
 
@@ -31,7 +30,7 @@ public class PostGetOneResponseDto {
     private List<CommentGetByPostResponseDto> commentList;
 
     @Builder
-    public PostGetOneResponseDto(Long postId, String title, String content, PostCategory postCategory, UUID memberId, String nickname, LocalDateTime createdDateTime, LocalDateTime modifiedDateTime, List<CommentGetByPostResponseDto> commentList) {
+    public PostGetOneResponseDto(Long postId, String title, String content, PostCategory postCategory, Long memberId, String nickname, LocalDateTime createdDateTime, LocalDateTime modifiedDateTime, List<CommentGetByPostResponseDto> commentList) {
         this.postId = postId;
         this.title = title;
         this.content = content;

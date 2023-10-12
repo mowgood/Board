@@ -4,17 +4,15 @@ import com.project.board.member.enumeration.MemberStatus;
 import com.project.board.member.enumeration.Role;
 import com.project.board.member.enumeration.converter.MemberStatusConverter;
 import com.project.board.member.enumeration.converter.RoleConverter;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -22,10 +20,8 @@ import java.util.UUID;
 public class Member {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)")
-    private UUID memberId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long memberId;
 
     @NotNull
     private String name;

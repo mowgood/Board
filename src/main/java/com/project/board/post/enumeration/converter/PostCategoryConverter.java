@@ -2,8 +2,8 @@ package com.project.board.post.enumeration.converter;
 
 import com.project.board.post.enumeration.PostCategory;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
 @Converter
 public class PostCategoryConverter implements AttributeConverter<PostCategory, String> {
