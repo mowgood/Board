@@ -1,8 +1,8 @@
 package com.project.board.post.repository;
 
 import com.project.board.post.dto.request.PostGetListRequestDto;
-import com.project.board.post.enumeration.PostCategory;
 import com.project.board.post.dto.response.PostGetResponseDto;
+import com.project.board.post.enumeration.PostCategory;
 import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Projections;
@@ -16,7 +16,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-import static com.project.board.entity.QPost.post;
+import static com.project.board.post.domain.QPost.post;
 import static org.apache.logging.log4j.util.Strings.isEmpty;
 
 @RequiredArgsConstructor

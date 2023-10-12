@@ -3,7 +3,6 @@ package com.project.board.post.repository.mapping;
 import com.project.board.post.enumeration.PostCategory;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public interface PostGetMapping {
     Long getPostId();
@@ -14,7 +13,7 @@ public interface PostGetMapping {
 
     PostCategory getPostCategory();
 
-    UUID getMemberMemberId();
+    Long getMemberMemberId();
 
     String getMemberNickname();
 

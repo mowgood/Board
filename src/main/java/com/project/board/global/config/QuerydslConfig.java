@@ -1,20 +1,20 @@
 package com.project.board.global.config;
 
+import com.querydsl.jpa.JPQLTemplates;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.persistence.EntityManager;
-
 @Configuration
-@RequiredArgsConstructor
 public class QuerydslConfig {
 
-    private final EntityManager em;
+    @PersistenceContext
+    public EntityManager em;
 
     @Bean
-    public JPAQueryFactory jpaQueryFactory(EntityManager em) {
-        return new JPAQueryFactory(em);
+    public JPAQueryFactory jpaQueryFactory() {
+        return new JPAQueryFactory(JPQLTemplates.DEFAULT, em);
     }
 }

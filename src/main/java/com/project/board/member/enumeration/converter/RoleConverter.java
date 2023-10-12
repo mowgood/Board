@@ -2,8 +2,8 @@ package com.project.board.member.enumeration.converter;
 
 import com.project.board.member.enumeration.Role;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
 @Converter
 public class RoleConverter implements AttributeConverter<Role, String> {
